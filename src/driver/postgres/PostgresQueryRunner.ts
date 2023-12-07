@@ -4094,7 +4094,7 @@ export class PostgresQueryRunner
      * Loads Postgres version.
      */
     protected async getVersion(): Promise<string> {
-        const result = await this.query(`SELECT version()`)
+        const result = await this.query(`SELECT version() AS "version";`)
         return result[0]["version"].replace(/^PostgreSQL ([\d\.]+) .*$/, "$1")
     }
 

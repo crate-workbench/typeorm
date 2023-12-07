@@ -381,7 +381,7 @@ export class PostgresDriver implements Driver {
 
         const results = (await this.executeQuery(
             connection,
-            "SELECT version();",
+            `SELECT version() AS "version";`,
         )) as {
             rows: {
                 version: string
