@@ -2,6 +2,8 @@ import { Driver } from "../Driver"
 import { PostgresDriver } from "../postgres/PostgresDriver"
 import { CrateDBPostgresConnectionOptions } from "./CrateDBPostgresConnectionOptions";
 import { ColumnType } from "../types/ColumnTypes"
+import { QueryRunner } from "../../query-runner/QueryRunner"
+import { ReplicationMode } from "../types/ReplicationMode"
 import { CrateDBPostgresQueryRunner } from "./CrateDBPostgresQueryRunner"
 
 abstract class PostgresWrapper extends PostgresDriver {
