@@ -4642,12 +4642,12 @@ export class CrateDBPostgresQueryRunner
         if (column.charset) c += ' CHARACTER SET "' + column.charset + '"'
         if (column.collation) c += ' COLLATE "' + column.collation + '"'
         if (column.isNullable !== true) c += " NOT NULL"
-        if (column.default !== undefined && column.default !== null)
+        if (column.default !== undefined && column.default !== null && !(column.isGenerated &&
+            column.generationStrategy === "uuid"))
             c += " DEFAULT " + column.default
         if (
             column.isGenerated &&
-            column.generationStrategy === "uuid" &&
-            !column.default
+            column.generationStrategy === "uuid" 
         )
             c += ` TEXT DEFAULT ${this.driver.uuidGenerator}`
 
