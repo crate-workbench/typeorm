@@ -25,7 +25,7 @@ import { ColumnType } from "../types/ColumnTypes"
 import { IsolationLevel } from "../types/IsolationLevel"
 import { MetadataTableType } from "../types/MetadataTableType"
 import { ReplicationMode } from "../types/ReplicationMode"
-import { PostgresDriver } from "./PostgresDriver"
+import { CrateDBPostgresDriver } from "./CrateDBPostgresDriver"
 
 /**
  * Runs queries on a single postgres database connection.
@@ -41,7 +41,7 @@ export class CrateDBPostgresQueryRunner
     /**
      * Database driver used by connection.
      */
-    driver: PostgresDriver
+    driver: CrateDBPostgresDriver
 
     // -------------------------------------------------------------------------
     // Protected Properties
@@ -61,7 +61,7 @@ export class CrateDBPostgresQueryRunner
     // Constructor
     // -------------------------------------------------------------------------
 
-    constructor(driver: PostgresDriver, mode: ReplicationMode) {
+    constructor(driver: CrateDBPostgresDriver, mode: ReplicationMode) {
         super()
         this.driver = driver
         this.connection = driver.connection
