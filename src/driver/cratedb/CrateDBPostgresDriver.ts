@@ -72,6 +72,8 @@ export class CrateDBPostgresDriver extends PostgresWrapper implements Driver {
             return "text"
         } else if (column.type === "nchar" || column.type === "national char") {
             return "text"
+        } else if ( ((column.type as string) || "") === "") {
+            return "text"
         } else {
             return (column.type as string) || ""
         }
