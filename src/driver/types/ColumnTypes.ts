@@ -17,6 +17,9 @@ export type PrimaryGeneratedColumnType =
     | "fixed" // mysql
     | "numeric" // postgres, mssql, sqlite, spanner
     | "number" // oracle
+    | "text" 
+    | "uuid" 
+    | "string" 
 
 /**
  * Column types where spatial properties are used.
