@@ -2,6 +2,7 @@ import { Driver } from "../Driver"
 import { PostgresDriver } from "../postgres/PostgresDriver"
 import { CrateDBPostgresConnectionOptions } from "./CrateDBPostgresConnectionOptions";
 import { ColumnType } from "../types/ColumnTypes"
+import { CrateDBPostgresQueryRunner } from "./CrateDBPostgresQueryRunner"
 
 abstract class PostgresWrapper extends PostgresDriver {
     options: any
@@ -32,6 +33,10 @@ export class CrateDBPostgresDriver extends PostgresWrapper implements Driver {
         return "gen_random_text_uuid()"
     }
 
+	createQueryRunner(mode: ReplicationMode): QueryRunner {
+        return new CrateDBPostgresQueryRunner(this, mode)
+    }
+    
 	normalizeType(column: {
         type: ColumnType
         length?: number | string
